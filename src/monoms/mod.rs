@@ -1,6 +1,7 @@
 use std::convert::From;
 use std::fmt;
 use std::ops;
+use std::cmp;
 
 pub trait Monom {
     fn zero() -> Self;
@@ -71,6 +72,11 @@ impl From<Vec<usize>> for MonomBits {
         return monom
     }
 }
+impl cmp::PartialEq for MonomBits {
+    fn eq(&self, other: &Self) -> bool {
+        self.bits == other.bits
+    }
+}
 impl ops::Mul for MonomBits {
     type Output = Self;
     fn mul(self, rhs: Self) -> Self {
@@ -109,3 +115,6 @@ impl fmt::Display for MonomBits {
         write!(f, "{:?}", vars)
     }
 }
+
+#[cfg(test)]
+mod tests;
