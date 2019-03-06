@@ -52,8 +52,32 @@ fn test_mul_bench() {
     let res = a * b;
     assert_eq!(ab, res);
 }
+
 #[test]
-#[should_panic] // Does not implemented
+fn test_is_divisible() {
+    let a = MonomBits::from(0);
+    let b = MonomBits::from(1);
+
+    assert!(!a.is_divisible(&b));
+    assert!(!b.is_divisible(&a));
+
+    let _1 = MonomBits::one();
+    assert!(a.is_divisible(&_1));
+    assert!(!_1.is_divisible(&a));
+
+    let _0 = MonomBits::zero();
+    assert!(!_0.is_divisible(&a));
+}
+#[test]
+#[should_panic]
+fn test_is_divisible_by_zero() {
+    let a = MonomBits::from(0);
+    let _0 = MonomBits::zero();
+
+    let _res = a.is_divisible(&_0);
+}
+
+#[test]
 fn test_mul_right_zero() {
     let a = MonomBits::from(0);
     let _0 = MonomBits::zero();
@@ -62,7 +86,6 @@ fn test_mul_right_zero() {
     assert!(res.is_zero());
 }
 #[test]
-#[should_panic] // Does not implemented
 fn test_mul_left_zero() {
     let a = MonomBits::from(0);
     let _0 = MonomBits::zero();
