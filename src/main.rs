@@ -1,5 +1,3 @@
-mod monoms;
-
-fn main() {
-    println!("Symbolic Boolean Expressions")
+fn main () {
+  println!("Symbolic Boolean Expressions");
 }

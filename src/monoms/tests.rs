@@ -44,6 +44,15 @@ fn test_mul() {
     assert_eq!(ab, res);
 }
 #[test]
+fn test_mul_bench() {
+    let a = MonomBits::from(0);
+    let b = MonomBits::from(1);
+    let ab = MonomBits::from(vec![0, 1]);
+
+    let res = a * b;
+    assert_eq!(ab, res);
+}
+#[test]
 #[should_panic] // Does not implemented
 fn test_mul_right_zero() {
     let a = MonomBits::from(0);
