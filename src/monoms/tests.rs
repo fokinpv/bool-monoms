@@ -33,6 +33,28 @@ fn test_from_large_vec() {
     // TODO Do not have implementation for large variable
     let _monom = MonomBits::from(vec![100]);
 }
+
+#[test]
+fn test_eq() {
+    let zero1 = MonomBits::zero();
+    let zero2 = MonomBits::zero();
+
+    assert!(zero1 == zero2);
+
+    let a = MonomBits::from(0);
+    let b = MonomBits::from(1);
+
+    assert!(a != b);
+}
+
+#[test]
+fn test_eq_zero_not_one() {
+    let zero = MonomBits::zero();
+    let one = MonomBits::one();
+
+    assert!(zero != one);
+}
+
 // Group of tests for a multiplication
 #[test]
 fn test_mul() {

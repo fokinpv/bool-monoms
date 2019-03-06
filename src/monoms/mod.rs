@@ -93,6 +93,8 @@ impl From<Vec<usize>> for MonomBits {
 impl cmp::PartialEq for MonomBits {
     fn eq(&self, other: &Self) -> bool {
         self.bits == other.bits
+            && self.is_zero == other.is_zero
+            && self.is_one == other.is_one
     }
 }
 impl ops::Mul for MonomBits {
