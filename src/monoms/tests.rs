@@ -98,6 +98,18 @@ fn test_is_divisible_by_zero() {
 
     let _res = a.is_divisible(&_0);
 }
+#[test]
+fn test_is_relativelyprime() {
+    let a = MonomBits::from(0);
+    let b = MonomBits::from(1);
+    let ac = MonomBits::from(vec![0, 2]);
+    let ab = MonomBits::from(vec![0, 1]);
+
+    assert_eq!(a.is_relativelyprime(&a), true);
+    assert_eq!(a.is_relativelyprime(&b), true);
+    assert_eq!(ac.is_relativelyprime(&b), true);
+    assert_eq!(ab.is_relativelyprime(&b), false);
+}
 
 #[test]
 fn test_mul_right_zero() {
