@@ -19,6 +19,14 @@ pub struct MonomBits {
     bits: u32,
 }
 
+impl MonomBits {
+    pub fn from_int(num: u32) -> Self {
+        let mut monom = MonomBits::new();
+        monom.bits = num;
+        return monom;
+    }
+}
+
 impl Monom for MonomBits {
     fn is_zero(&self) -> bool {
         return self.is_zero;
@@ -92,9 +100,7 @@ impl From<Vec<usize>> for MonomBits {
 }
 impl cmp::PartialEq for MonomBits {
     fn eq(&self, other: &Self) -> bool {
-        self.bits == other.bits
-            && self.is_zero == other.is_zero
-            && self.is_one == other.is_one
+        self.bits == other.bits && self.is_zero == other.is_zero && self.is_one == other.is_one
     }
 }
 impl ops::Mul for MonomBits {

@@ -10,13 +10,13 @@ fn bench_mul() {
     let a = MonomBits::from(0);
     let b = MonomBits::from(1);
 
-    let _res = a*b;
+    let _res = a * b;
 }
 fn bench_div() {
     let ab = MonomBits::from(vec![0, 1]);
     let b = MonomBits::from(1);
 
-    let _res = ab/b;
+    let _res = ab / b;
 }
 
 fn criterion_benchmark(c: &mut Criterion) {
