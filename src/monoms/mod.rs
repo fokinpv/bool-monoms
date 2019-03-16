@@ -18,7 +18,28 @@ pub struct MonomBits {
     is_one: bool,
     bits: u32,
 }
-
+impl MonomBits {
+    fn new() -> MonomBits {
+        MonomBits {
+            is_zero: false,
+            is_one: false,
+            bits: 0,
+        }
+    }
+    pub fn from_int(num: u32) -> Self {
+        match num {
+            0 => MonomBits::zero(),
+            _ => {
+                let mut monom = MonomBits::new();
+                monom.bits = num;
+                monom
+            }
+        }
+    }
+    fn set_var(&mut self, var: usize) {
+        self.bits |= 1 << var;
+    }
+}
 impl Monom for MonomBits {
     fn is_zero(&self) -> bool {
         return self.is_zero;
@@ -60,18 +81,6 @@ impl Monom for MonomBits {
         }
         let lcm = self.bits | other.bits;
         return other.bits == self.bits ^ lcm;
-    }
-}
-impl MonomBits {
-    fn new() -> MonomBits {
-        MonomBits {
-            is_zero: false,
-            is_one: false,
-            bits: 0,
-        }
-    }
-    fn set_var(&mut self, var: usize) {
-        self.bits |= 1 << var;
     }
 }
 impl From<usize> for MonomBits {

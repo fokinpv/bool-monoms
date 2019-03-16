@@ -9,6 +9,13 @@ fn test_new() {
 }
 #[test]
 fn test_from_int() {
+    let monom = MonomBits::from_int(0);
+    assert!(monom.is_zero());
+    let monom = MonomBits::from_int(1);
+    assert!(monom.bits == 1);
+}
+#[test]
+fn test_from_var() {
     let monom = MonomBits::from(0);
     assert!(monom.bits == 1);
     let monom = MonomBits::from(1);
